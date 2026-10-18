@@ -17,6 +17,10 @@ The current version contains the frontend implementation developed for the FSD L
 * Frontend: HTML, CSS, JavaScript, jQuery
 * Backend: Planned — Node.js and Express
 * Database: Planned — MongoDB
+* Container: Docker + nginx
+* Orchestration: Kubernetes (kind)
+* CI/CD: GitHub Actions → GHCR
+* Monitoring: Prometheus + Grafana
 
 ## Running locally
 
@@ -25,19 +29,51 @@ make install
 make run
 ```
 
+## Running with Docker
+
+```bash
+make docker-up
+# App available at http://localhost:8080
+# Health check: http://localhost:8080/health
+```
+
 ## Live URL
 
-Add once M5 is done. Until then, leave as is.
+https://placementhub-devops-24eskcs010.onrender.com
 
 ## Health endpoint
 
-`GET /health` returns the running commit SHA. See `Makefile` and the milestone sheet for why this is required.
+`GET /health` returns `{"status":"ok","sha":"<git-sha>"}`. See `Makefile` and the milestone sheet for why this is required.
+
+## Container Registry
+
+Image published to GHCR on every push:
+```
+ghcr.io/skit-devops-2026/devops-24ESKCS010:latest
+```
+
+## Kubernetes
+
+```bash
+# Start a local cluster with kind
+kind create cluster
+kubectl apply -f k8s/
+kubectl get pods
+```
+
+## Monitoring
+
+Prometheus config: `monitoring/prometheus.yml`
+Grafana dashboard: `monitoring/grafana-dashboard.json`
 
 ## Development
+
 Project documentation is updated as the application evolves.
 
 ## Project Status
+
 The frontend implementation is currently under development, with backend integration planned for future development.
 
 ## Development Notes
+
 The project is being developed incrementally, with version control and CI practices maintained throughout development.

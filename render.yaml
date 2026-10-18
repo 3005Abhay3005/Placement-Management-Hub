@@ -1,0 +1,15 @@
+# Render Blueprint — PlacementHub static site
+# This file lets Render auto-detect and deploy your service.
+# Visit https://render.com → New → Static Site → Connect your GitHub repo.
+
+services:
+  - type: web
+    name: placementhub-devops-24eskcs010
+    runtime: static
+    buildCommand: echo "Static site — no build needed"
+    staticPublishPath: ./
+    pullRequestPreviewsEnabled: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

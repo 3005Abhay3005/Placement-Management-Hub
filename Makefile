@@ -13,7 +13,7 @@ run:
 	@echo "Open login.html in a browser to run the application"
 
 docker-build:
-	@echo "Docker setup will be added in M4"
+	docker build --build-arg GIT_SHA=$$(git rev-parse --short HEAD) -t ghcr.io/skit-devops-2026/devops-24ESKCS010:latest .
 
 docker-up:
 	docker compose up --build

@@ -1,0 +1,36 @@
+# PlacementHub — Prometheus scrape configuration
+# Scrapes the live Render deployment health endpoint every 15 seconds.
+# Run locally: docker run -p 9090:9090 -v $(pwd)/monitoring:/etc/prometheus prom/prometheus
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+
+# Alerting (placeholder — wire to Alertmanager when needed)
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+# ── Scrape targets ─────────────────────────────────────────────────────────────
+scrape_configs:
+
+  # Live Render deployment — checks /health endpoint
+  - job_name: placementhub-render
+    scheme: https
+    metrics_path: /health
+    static_configs:
+      - targets:
+          - placementhub-devops-24eskcs010.onrender.com
+    # Render returns JSON, not Prometheus metrics format.
+    # Use blackbox exporter pattern: just verify HTTP 200.
+    metric_relabel_configs: []
+
+  # Local Docker container (for development)
+  - job_name: placementhub-local
+    scheme: http
+    metrics_path: /health
+    static_configs:
+      - targets:
+          - localhost:8080
