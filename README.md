@@ -39,7 +39,7 @@ make docker-up
 
 ## Live URL
 
-https://placementhub-devops-24eskcs010.onrender.com
+https://placement-management-hub.onrender.com
 
 ## Health endpoint
 
