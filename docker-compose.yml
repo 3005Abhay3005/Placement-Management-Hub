@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         GIT_SHA: ${GIT_SHA:-dev}
-    image: ghcr.io/skit-devops-2026/devops-24ESKCS010:latest
+    image: ghcr.io/skit-devops-2026/devops-24eskcs010:latest
     container_name: placementhub
     ports:
       - "8080:80"
