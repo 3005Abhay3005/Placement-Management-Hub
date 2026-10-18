@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team — PlacementHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 20 20"><path d="M10 2L2 6v8l8 4 8-4V6L10 2zm0 2.24L16 7.5 10 10.76 4 7.5l6-3.26zM3.5 9.08l5.75 3.13V17.5L3.5 14.42V9.08zm7.25 3.13L16.5 9.08v5.34L10.75 17.5v-5.29z"/></svg>
+      </div>
+      <span class="logo-name">PlacementHub</span>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="team.html" class="active">Team</a>
+    </nav>
+
+    <div class="actions">
+      <button id="btn-login-toggle" class="btn btn-ghost">Login</button>
+      <a href="register.html" class="btn btn-solid">Sign up</a>
+
+      <!-- Role Dropdown -->
+      <div class="dropdown">
+        <div class="dropdown-title">Continue as</div>
+        <div class="role-cards">
+          <a href="login.html?role=institute" class="role-card">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+              </svg>
+            </div>
+            <span class="role-label">Institute</span>
+          </a>
+
+          <a href="login.html?role=student" class="role-card">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/>
+                <path d="M6 12v5c0 2.21 2.686 4 6 4s6-1.79 6-4v-5"/>
+              </svg>
+            </div>
+            <span class="role-label">Student</span>
+          </a>
+
+          <a href="login.html?role=recruiter" class="role-card">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v4M10 14h4"/>
+              </svg>
+            </div>
+            <span class="role-label">Recruiter</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Team Content Section -->
+  <section style="padding: 100px 120px;">
+    <h1 style="font-family: 'Syne', sans-serif; font-size: 42px; margin-bottom: 10px;">
+      Our Team
+    </h1>
+    <p style="color: #7a7570; margin-bottom: 60px;">
+      Meet the team behind PlacementHub
+    </p>
+
+    <!-- Team Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px;">
+      <div class="team-card" style="background: #fff; border: 1px solid #e2ded9; border-radius: 16px; padding: 30px; text-align: center; transition: 0.3s; cursor: default;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: #c8e6e0; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: auto; margin-bottom: 15px;">
+          👨‍💻
+        </div>
+        <div style="font-weight: 700; font-size: 18px; margin-bottom: 6px;">Abhay Kumar Sharma</div>
+        <div style="font-size: 14px; color: #7a7570; margin-bottom: 10px;">Developer</div>
+        <div style="font-size: 13px; color: #444;">Roll No: 24ESKCS010</div>
+      </div>
+
+      <div class="team-card" style="background: #fff; border: 1px solid #e2ded9; border-radius: 16px; padding: 30px; text-align: center; transition: 0.3s; cursor: default;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: #c8e6e0; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: auto; margin-bottom: 15px;">
+          👩‍💻
+        </div>
+        <div style="font-weight: 700; font-size: 18px; margin-bottom: 6px;">Aditi Yadav</div>
+        <div style="font-size: 14px; color: #7a7570; margin-bottom: 10px;">Developer</div>
+        <div style="font-size: 13px; color: #444;">Roll No: 24ESKCS018</div>
+      </div>
+
+      <div class="team-card" style="background: #fff; border: 1px solid #e2ded9; border-radius: 16px; padding: 30px; text-align: center; transition: 0.3s; cursor: default;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: #c8e6e0; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: auto; margin-bottom: 15px;">
+          👨‍💻
+        </div>
+        <div style="font-weight: 700; font-size: 18px; margin-bottom: 6px;">Aanya Gupta</div>
+        <div style="font-size: 14px; color: #7a7570; margin-bottom: 10px;">Developer</div>
+        <div style="font-size: 13px; color: #444;">Roll No: 24ESKCS002</div>
+      </div>
+
+    </div>
+
+    <!-- Batch Details -->
+    <div style="margin-top: 60px; padding: 25px; border-radius: 12px; background: #f7f7f7; border: 1px solid #e2ded9; text-align: center;">
+      <h3 style="margin-bottom: 10px;">Batch Details</h3>
+      <p style="color: #7a7570; line-height: 2;">
+        B.Tech CSE (AI)<br />
+        Section: AI-B<br />
+        Group: 2
+      </p>
+    </div>
+  </section>
+
+  <footer>© 2026 PlacementHub — Connecting Talent with Opportunity</footer>
+
+  <script>
+    // jQuery hover effects for team cards
+    $(document).ready(function() {
+      $('.team-card').hover(
+        function() {
+          $(this).css({ 'transform': 'translateY(-6px)', 'box-shadow': '0 10px 25px rgba(0,0,0,0.08)' });
+        },
+        function() {
+          $(this).css({ 'transform': 'translateY(0)', 'box-shadow': 'none' });
+        }
+      );
+    });
+  </script>
+
+</body>
+</html>

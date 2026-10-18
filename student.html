@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard — PlacementHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 20 20"><path d="M10 2L2 6v8l8 4 8-4V6L10 2zm0 2.24L16 7.5 10 10.76 4 7.5l6-3.26zM3.5 9.08l5.75 3.13V17.5L3.5 14.42V9.08zm7.25 3.13L16.5 9.08v5.34L10.75 17.5v-5.29z"/></svg>
+      </div>
+      <span class="logo-name">PlacementHub</span>
+    </a>
+
+    <div class="actions">
+      <a href="index.html" class="btn btn-ghost">Home</a>
+      <button id="btn-logout" class="btn btn-solid">Logout</button>
+    </div>
+  </header>
+
+  <!-- Dashboard Layout -->
+  <div class="dash-layout">
+    <aside class="sidebar">
+      <div class="sidebar-user">
+        <div class="avatar" id="user-avatar">?</div>
+        <div>
+          <div class="sidebar-user-name" id="user-display-name">Student Name</div>
+          <div class="sidebar-user-role">Student</div>
+        </div>
+      </div>
+
+      <div class="sidebar-title">Menu</div>
+
+      <ul class="sidebar-nav">
+        <li>
+          <button class="active" data-tab="tab-overview">
+            <span>⊞</span> Dashboard
+          </button>
+        </li>
+        <li>
+          <button data-tab="tab-profile">
+            <span>◎</span> My Profile
+          </button>
+        </li>
+        <li>
+          <button data-tab="tab-opps">
+            <span>◈</span> Opportunities
+          </button>
+        </li>
+        <li>
+          <button data-tab="tab-apps">
+            <span>◷</span> Applications
+          </button>
+        </li>
+        <li style="margin-top: 2rem;">
+          <button id="btn-sidebar-logout" style="color: var(--muted);">
+            <span>→</span> Logout
+          </button>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="dash-content">
+      
+      <!-- ── TAB 1: OVERVIEW ── -->
+      <div id="tab-overview" class="tab-pane active">
+        <div class="page-header">
+          <h1>Hello, <span id="welcome-first-name">Student</span> 👋</h1>
+          <p>Welcome to your placement dashboard</p>
+        </div>
+
+        <div id="overview-warning" class="alert alert-warning" style="display: none; justify-content: space-between; align-items: center;">
+          <span>⚠️ Complete your profile to unlock opportunities.</span>
+          <button class="btn btn-ghost btn-sm" data-tab="tab-profile">Complete Now</button>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span>Profile Completion</span>
+            <span id="profile-pct-label">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div id="profile-pct-fill" class="progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Applied</div>
+            <div class="stat-value" id="stat-applied">0</div>
+            <div class="stat-sub">opportunities</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Shortlisted</div>
+            <div class="stat-value" id="stat-shortlisted">0</div>
+            <div class="stat-sub">by recruiters</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Selected</div>
+            <div class="stat-value" id="stat-selected" style="color: var(--success);">0</div>
+            <div class="stat-sub">offers received</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Roll Number</div>
+            <div class="stat-value" id="stat-roll" style="font-size: 1.1rem; padding-top: 0.4rem;">—</div>
+            <div class="stat-sub">university ID</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Recent Applications</div>
+              <div class="card-meta">Your last 3 applications</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" data-tab="tab-apps">View All</button>
+          </div>
+
+          <div id="recent-apps-container">
+            <div class="loading-page"><div class="spinner"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TAB 2: MY PROFILE ── -->
+      <div id="tab-profile" class="tab-pane">
+        <div class="page-header">
+          <h1>My Profile</h1>
+          <p>Keep your profile up-to-date — it's shown to recruiters when you apply.</p>
+        </div>
+
+        <div id="profile-status-alert" class="alert alert-warning">⚠️ Fill all required fields to unlock opportunities.</div>
+
+        <div class="card" style="margin-bottom: 1.5rem; padding: 1rem 1.5rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">University Roll Number</div>
+              <div id="profile-roll-display" style="font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; margin-top: 0.2rem;">—</div>
+            </div>
+            <span class="badge badge-approved">Verified ID</span>
+          </div>
+        </div>
+
+        <div id="profile-save-msg" class="alert" style="display: none;"></div>
+
+        <form id="profile-form">
+          <div class="form-section-title">Personal Information</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number <span class="req">*</span></label>
+              <input type="tel" id="prof-phone" placeholder="10-digit number">
+            </div>
+            <div class="form-group">
+              <label>Branch / Department <span class="req">*</span></label>
+              <select id="prof-branch">
+                <option value="CSE">CSE</option>
+                <option value="CSE (AI)">CSE (AI)</option>
+                <option value="IT">IT</option>
+                <option value="ECE">ECE</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-section-title">Academic Information</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Current CGPA <span class="req">*</span></label>
+              <input type="number" id="prof-cgpa" step="0.01" min="0" max="10" placeholder="e.g. 8.25">
+            </div>
+            <div class="form-group">
+              <label>Passing Year <span class="req">*</span></label>
+              <input type="number" id="prof-passingYear" placeholder="e.g. 2027">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>10th Percentage</label>
+              <input type="number" id="prof-tenthPct" step="0.01" min="0" max="100" placeholder="e.g. 88.5">
+            </div>
+            <div class="form-group">
+              <label>12th Percentage</label>
+              <input type="number" id="prof-twelfthPct" step="0.01" min="0" max="100" placeholder="e.g. 82.0">
+            </div>
+          </div>
+
+          <div class="form-section-title">Professional Information</div>
+          <div class="form-group">
+            <label>Skills <span class="req">*</span></label>
+            <textarea id="prof-skills" rows="3" placeholder="Comma-separated: Python, JavaScript, Machine Learning, React"></textarea>
+            <p class="form-hint">Separate each skill with a comma</p>
+          </div>
+          <div class="form-group">
+            <label>Resume Link <span class="req">*</span></label>
+            <input type="url" id="prof-resumeUrl" placeholder="Google Drive / Dropbox link to your resume PDF">
+            <p class="form-hint">Make sure the link is publicly accessible</p>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>LinkedIn</label>
+              <input type="url" id="prof-linkedIn" placeholder="https://linkedin.com/in/...">
+            </div>
+            <div class="form-group">
+              <label>GitHub</label>
+              <input type="url" id="prof-github" placeholder="https://github.com/...">
+            </div>
+          </div>
+
+          <button class="btn btn-solid" type="submit" id="btn-save-profile">
+            Save Profile
+          </button>
+        </form>
+      </div>
+
+      <!-- ── TAB 3: OPPORTUNITIES ── -->
+      <div id="tab-opps" class="tab-pane">
+        <div class="page-header">
+          <h1>Opportunities</h1>
+          <p>Jobs and internships matching your profile and branch</p>
+        </div>
+
+        <div id="opps-container">
+          <div class="loading-page"><div class="spinner"></div></div>
+        </div>
+      </div>
+
+      <!-- ── TAB 4: APPLICATIONS ── -->
+      <div id="tab-apps" class="tab-pane">
+        <div class="page-header">
+          <h1>My Applications</h1>
+          <p>Track the status of every opportunity you've applied to</p>
+        </div>
+
+        <div id="apps-container">
+          <div class="loading-page"><div class="spinner"></div></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      const user = requireAuth('student');
+      if (!user) return;
+
+      $('#user-avatar').text(getInitials(user.name));
+      $('#user-display-name').text(user.name);
+      $('#welcome-first-name').text(user.name.split(' ')[0]);
+
+      $('#btn-logout, #btn-sidebar-logout').on('click', logout);
+
+      let profileData = null;
+      let applicationsData = [];
+      let appliedOppIds = new Set();
+
+      // Fetch Profile and Applications
+      function loadStudentData() {
+        $.when(
+          apiCall({ url: '/student/profile' }),
+          apiCall({ url: '/student/applications' })
+        )
+        .done(function (pRes, aRes) {
+          profileData = pRes[0];
+          applicationsData = aRes[0];
+
+          appliedOppIds = new Set(applicationsData.map(app => app.opportunity?._id || app.opportunity));
+
+          renderOverview();
+          renderProfileForm();
+          renderApplications();
+          loadOpportunities();
+        })
+        .fail(function (err) {
+          console.error("Failed loading student data", err);
+        });
+      }
+
+      function renderOverview() {
+        const fields = ['phone', 'cgpa', 'passingYear', 'skills', 'resumeUrl'];
+        const filled = fields.filter(f => profileData?.[f] && (!Array.isArray(profileData[f]) || profileData[f].length > 0)).length;
+        const pct = Math.round((filled / fields.length) * 100);
+
+        $('#profile-pct-label').text(`${pct}%`);
+        $('#profile-pct-fill').css('width', `${pct}%`);
+
+        if (profileData?.isProfileComplete) {
+          $('#overview-warning').hide();
+          $('#profile-status-alert').attr('class', 'alert alert-success').html('✅ Your profile is complete. You can apply to opportunities.');
+        } else {
+          $('#overview-warning').css('display', 'flex');
+          $('#profile-status-alert').attr('class', 'alert alert-warning').html('⚠️ Fill all required fields to unlock opportunities.');
+        }
+
+        $('#stat-applied').text(applicationsData.length);
+        $('#stat-shortlisted').text(applicationsData.filter(a => a.status === 'shortlisted').length);
+        $('#stat-selected').text(applicationsData.filter(a => a.status === 'selected').length);
+        $('#stat-roll').text(profileData?.rollNumber || '—');
+        $('#profile-roll-display').text(profileData?.rollNumber || '—');
+
+        // Render top 3 recent applications
+        if (applicationsData.length === 0) {
+          $('#recent-apps-container').html(`
+            <div class="empty" style="padding: 2rem;">
+              <div class="empty-icon">📋</div>
+              <h3>No applications yet</h3>
+              <p>Browse opportunities and start applying!</p>
+            </div>
+          `);
+        } else {
+          let rowsHtml = applicationsData.slice(0, 3).map(a => `
+            <tr>
+              <td style="font-weight: 500;">${a.opportunity?.title || '—'}</td>
+              <td style="color: var(--muted);">${a.opportunity?.recruiter?.companyName || '—'}</td>
+              <td><span class="badge badge-${a.opportunity?.type || 'job'}">${a.opportunity?.type || 'job'}</span></td>
+              <td><span class="badge badge-${a.status}">${a.status}</span></td>
+            </tr>
+          `).join('');
+
+          $('#recent-apps-container').html(`
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Role</th><th>Company</th><th>Type</th><th>Status</th></tr>
+                </thead>
+                <tbody>${rowsHtml}</tbody>
+              </table>
+            </div>
+          `);
+        }
+      }
+
+      function renderProfileForm() {
+        if (!profileData) return;
+        $('#prof-phone').val(profileData.phone || '');
+        $('#prof-branch').val(profileData.branch || 'CSE');
+        $('#prof-cgpa').val(profileData.cgpa || '');
+        $('#prof-passingYear').val(profileData.passingYear || '');
+        $('#prof-tenthPct').val(profileData.tenthPct || '');
+        $('#prof-twelfthPct').val(profileData.twelfthPct || '');
+        $('#prof-skills').val((profileData.skills || []).join(', '));
+        $('#prof-resumeUrl').val(profileData.resumeUrl || '');
+        $('#prof-linkedIn').val(profileData.linkedIn || '');
+        $('#prof-github').val(profileData.github || '');
+      }
+
+      // Save Profile Submit
+      $('#profile-form').on('submit', function (e) {
+        e.preventDefault();
+        const $msg = $('#profile-save-msg').hide();
+        const $btn = $('#btn-save-profile').prop('disabled', true).html('<span class="spinner"></span> Saving...');
+
+        const payload = {
+          phone: $('#prof-phone').val().trim(),
+          branch: $('#prof-branch').val(),
+          cgpa: parseFloat($('#prof-cgpa').val()) || undefined,
+          passingYear: parseInt($('#prof-passingYear').val()) || undefined,
+          tenthPct: parseFloat($('#prof-tenthPct').val()) || undefined,
+          twelfthPct: parseFloat($('#prof-twelfthPct').val()) || undefined,
+          skills: $('#prof-skills').val().split(',').map(s => s.trim()).filter(Boolean),
+          resumeUrl: $('#prof-resumeUrl').val().trim(),
+          linkedIn: $('#prof-linkedIn').val().trim(),
+          github: $('#prof-github').val().trim()
+        };
+
+        apiCall({
+          url: '/student/profile',
+          method: 'PUT',
+          data: payload
+        })
+        .done(function (res) {
+          profileData = res.profile;
+          $msg.attr('class', 'alert alert-success').text('✅ Profile saved successfully!').show();
+          renderOverview();
+        })
+        .fail(function (xhr) {
+          const err = xhr.responseJSON?.message || 'Save failed.';
+          $msg.attr('class', 'alert alert-error').text(err).show();
+        })
+        .always(function () {
+          $btn.prop('disabled', false).text('Save Profile');
+        });
+      });
+
+      // Load Opportunities
+      function loadOpportunities() {
+        apiCall({ url: '/student/opportunities' })
+        .done(function (opps) {
+          if (!opps || opps.length === 0) {
+            $('#opps-container').html(`
+              <div class="empty">
+                <div class="empty-icon">🔍</div>
+                <h3>No opportunities yet</h3>
+                <p>Check back soon — recruiters are being onboarded.</p>
+              </div>
+            `);
+            return;
+          }
+
+          let html = opps.map(opp => {
+            const isApplied = appliedOppIds.has(opp._id);
+            const deadlineStr = formatDate(opp.deadline);
+            const minCgpa = opp.eligibility?.minCGPA > 0 ? `<span>📊 Min. CGPA: ${opp.eligibility.minCGPA}</span>` : '';
+            const branches = opp.eligibility?.branches?.length > 0 ? `<span>🎓 Branches: ${opp.eligibility.branches.join(', ')}</span>` : '';
+
+            return `
+              <div class="opp-card" data-opp-id="${opp._id}">
+                <div class="opp-title">${opp.title}</div>
+                <div class="opp-company">${opp.recruiter?.companyName || 'Company'} · ${opp.recruiter?.industry || 'Industry'}</div>
+                <div class="opp-meta">
+                  <span>📍 ${opp.location || 'Location TBD'}</span>
+                  <span>💰 ${opp.stipend || 'Not specified'}</span>
+                  <span>📅 Deadline: ${deadlineStr}</span>
+                  ${minCgpa}
+                  ${branches}
+                </div>
+                <p style="font-size: 0.875rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.6;">
+                  ${opp.description || ''}
+                </p>
+                <div class="opp-footer">
+                  <span class="badge badge-${opp.type || 'job'}">${opp.type || 'job'}</span>
+                  ${isApplied 
+                    ? '<span class="badge badge-applied">✓ Applied</span>' 
+                    : `<button class="btn btn-accent btn-sm btn-apply" data-id="${opp._id}">Apply Now</button>`
+                  }
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          $('#opps-container').html(html);
+
+          // Apply button handler
+          $('.btn-apply').on('click', function () {
+            const oppId = $(this).attr('data-id');
+            const $btn = $(this).prop('disabled', true).html('<span class="spinner"></span>');
+
+            apiCall({
+              url: `/student/apply/${oppId}`,
+              method: 'POST'
+            })
+            .done(function () {
+              appliedOppIds.add(oppId);
+              $btn.parent().html('<span class="badge badge-applied">✓ Applied</span>');
+              // Reload applications
+              apiCall({ url: '/student/applications' }).done(function (aRes) {
+                applicationsData = aRes;
+                renderOverview();
+                renderApplications();
+              });
+            })
+            .fail(function (xhr) {
+              alert(xhr.responseJSON?.message || 'Application failed.');
+              $btn.prop('disabled', false).text('Apply Now');
+            });
+          });
+        })
+        .fail(function (err) {
+          $('#opps-container').html('<div class="alert alert-error">Failed to load opportunities.</div>');
+        });
+      }
+
+      function renderApplications() {
+        if (!applicationsData || applicationsData.length === 0) {
+          $('#apps-container').html(`
+            <div class="empty">
+              <div class="empty-icon">📋</div>
+              <h3>No applications yet</h3>
+              <p>Go to Opportunities and start applying!</p>
+            </div>
+          `);
+          return;
+        }
+
+        let rowsHtml = applicationsData.map(a => `
+          <tr>
+            <td style="font-weight: 500;">${a.opportunity?.title || '—'}</td>
+            <td style="color: var(--muted);">${a.opportunity?.recruiter?.companyName || '—'}</td>
+            <td>${a.opportunity?.type ? `<span class="badge badge-${a.opportunity.type}">${a.opportunity.type}</span>` : '—'}</td>
+            <td style="color: var(--muted);">${formatDate(a.appliedAt)}</td>
+            <td><span class="badge badge-${a.status}">${a.status}</span></td>
+          </tr>
+        `).join('');
+
+        $('#apps-container').html(`
+          <div class="card" style="padding: 0; overflow: hidden;">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Role</th><th>Company</th><th>Type</th><th>Applied On</th><th>Status</th></tr>
+                </thead>
+                <tbody>${rowsHtml}</tbody>
+              </table>
+            </div>
+          </div>
+        `);
+      }
+
+      loadStudentData();
+    });
+  </script>
+
+</body>
+</html>

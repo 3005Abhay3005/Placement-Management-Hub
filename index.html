@@ -1,11 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=/login.html" />
-    <title>PlacementHub — Redirecting</title>
-  </head>
-  <body>
-    <p>Redirecting to <a href="/login.html">PlacementHub</a>...</p>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlacementHub — Connecting Talent with Opportunity</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 20 20"><path d="M10 2L2 6v8l8 4 8-4V6L10 2zm0 2.24L16 7.5 10 10.76 4 7.5l6-3.26zM3.5 9.08l5.75 3.13V17.5L3.5 14.42V9.08zm7.25 3.13L16.5 9.08v5.34L10.75 17.5v-5.29z"/></svg>
+      </div>
+      <span class="logo-name">PlacementHub</span>
+    </a>
+
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="team.html">Team</a>
+    </nav>
+
+    <div class="actions">
+      <button id="btn-login-toggle" class="btn btn-ghost">Login</button>
+      <a href="register.html" class="btn btn-solid">Sign up</a>
+
+      <!-- Role Dropdown -->
+      <div class="dropdown">
+        <div class="dropdown-title">Continue as</div>
+        <div class="role-cards">
+          <a href="login.html?role=institute" class="role-card">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+              </svg>
+            </div>
+            <span class="role-label">Institute</span>
+          </a>
+
+          <a href="login.html?role=student" class="role-card">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/>
+                <path d="M6 12v5c0 2.21 2.686 4 6 4s6-1.79 6-4v-5"/>
+              </svg>
+            </div>
+            <span class="role-label">Student</span>
+          </a>
+
+          <a href="login.html?role=recruiter" class="role-card">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v4M10 14h4"/>
+              </svg>
+            </div>
+            <span class="role-label">Recruiter</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Hero Content -->
+  <div class="mainpg">
+    <section class="hero">
+      <h1>Connect, Learn &amp;<br />Grow Together</h1>
+      <p>
+        PlacementHub brings institutes, students, and recruiters onto
+        one clean platform — making every connection count.
+      </p>
+      <div class="hero-actions">
+        <a href="register.html" class="btn btn-solid">Get Started</a>
+        <a href="login.html" class="btn btn-ghost">Sign In</a>
+      </div>
+    </section>
+
+    <section id="heroimg">
+      <div class="hero-right">
+        <div class="img-frame">
+          <div class="card-grid">
+            <div class="feature-card">🔒<small>Secured</small></div>
+            <div class="feature-card">👩🏻‍💻<small>User<br />Friendly</small></div>
+            <div class="feature-card">✅<small>Verified<br />Recruiters</small></div>
+            <div class="feature-card">🎓<small>Campus<br />Centric</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>© 2026 PlacementHub — Connecting Talent with Opportunity</footer>
+
+</body>
 </html>

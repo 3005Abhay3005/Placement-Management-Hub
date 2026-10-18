@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About PlacementHub — Connecting Talent with Opportunity</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header>
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 20 20"><path d="M10 2L2 6v8l8 4 8-4V6L10 2zm0 2.24L16 7.5 10 10.76 4 7.5l6-3.26zM3.5 9.08l5.75 3.13V17.5L3.5 14.42V9.08zm7.25 3.13L16.5 9.08v5.34L10.75 17.5v-5.29z"/></svg>
+      </div>
+      <span class="logo-name">PlacementHub</span>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="team.html">Team</a>
+    </nav>
+
+    <div class="actions">
+      <button id="btn-login-toggle" class="btn btn-ghost">Login</button>
+      <a href="register.html" class="btn btn-solid">Sign up</a>
+
+      <!-- Role Dropdown -->
+      <div class="dropdown">
+        <div class="dropdown-title">Continue as</div>
+        <div class="role-cards">
+          <a href="login.html?role=institute" class="role-card">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+              </svg>
+            </div>
+            <span class="role-label">Institute</span>
+          </a>
+
+          <a href="login.html?role=student" class="role-card">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/>
+                <path d="M6 12v5c0 2.21 2.686 4 6 4s6-1.79 6-4v-5"/>
+              </svg>
+            </div>
+            <span class="role-label">Student</span>
+          </a>
+
+          <a href="login.html?role=recruiter" class="role-card">
+            <div class="role-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v4M10 14h4"/>
+              </svg>
+            </div>
+            <span class="role-label">Recruiter</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Hero -->
+  <section style="padding: 100px 150px 40px 150px; max-width: 1200px;">
+    <h1 style="font-family: 'Syne', sans-serif; font-size: 48px;">
+      About PlacementHub
+    </h1>
+    <p style="margin-top: 20px; font-size: 18px; color: #7a7570; line-height: 1.7;">
+      PlacementHub is a modern platform designed to simplify and strengthen the
+      connection between students, institutes, and recruiters. Our goal is to create
+      a single ecosystem where career opportunities, academic institutions, and
+      industry professionals collaborate efficiently.
+    </p>
+  </section>
+
+  <!-- Mission -->
+  <section style="padding: 40px 150px; max-width: 1200px;">
+    <h2 style="font-family: 'Syne', sans-serif; font-size: 32px;">Our Mission</h2>
+    <p style="margin-top: 15px; color: #7a7570; line-height: 1.8;">
+      Our mission is to bridge the gap between education and employment by providing
+      a streamlined platform where students can showcase their skills, recruiters
+      can discover talented candidates, and institutes can manage placement
+      activities more effectively.
+    </p>
+  </section>
+
+  <!-- Features -->
+  <section style="padding: 60px 150px; max-width: 1200px;">
+    <h2 style="font-family: 'Syne', sans-serif; font-size: 32px;">Why PlacementHub?</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 40px;">
+      <div class="feature-card" style="width: 100%; height: 110px;">🔒<small>Secure Platform</small></div>
+      <div class="feature-card" style="width: 100%; height: 110px;">👩🏻‍💻<small>User Friendly</small></div>
+      <div class="feature-card" style="width: 100%; height: 110px;">✅<small>Verified Recruiters</small></div>
+      <div class="feature-card" style="width: 100%; height: 110px;">🎓<small>Campus Focused</small></div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section style="padding: 60px 150px; max-width: 1200px;">
+    <h2 style="font-family: 'Syne', sans-serif; font-size: 32px;">Our Story</h2>
+    <p style="margin-top: 20px; color: #7a7570; line-height: 1.8;">
+      PlacementHub was created with the vision of simplifying campus placements.
+      Traditional placement systems often involve scattered information, manual
+      processes, and communication gaps between institutes and companies.
+    </p>
+    <p style="margin-top: 16px; color: #7a7570; line-height: 1.8;">
+      PlacementHub solves this by bringing everything into one organized digital
+      platform. Students can discover opportunities, recruiters can connect with
+      verified talent, and institutes can manage placement activities with ease.
+    </p>
+  </section>
+
+  <footer>© 2026 PlacementHub — Connecting Talent with Opportunity</footer>
+
+</body>
+</html>
