@@ -2,11 +2,11 @@
 
 ## Author
 
-| Roll No.   | Name               | GitHub username     |
-| ---------- | ------------------ | ------------------- |
-| 24ESKCS010 | Abhay Kumar Sharma | 3005Abhay3005       |
-| 24ESKCS002 | Aanya Gupta        | ag-12345upta-sketch |
-| 24ESKCS018 | Aditi Yadav        | Aditiiydv           |
+| Roll No.   | Name               | GitHub                         |
+| ---------- | ------------------ | ------------------------------ |
+| 24ESKCS010 | Abhay Kumar Sharma | github.com/3005Abhay3005       |
+| 24ESKCS002 | Aanya Gupta        | github.com/ag12345upta-sketch  | 
+| 24ESKCS018 | Aditi Yadav        | github.com/Aditiiydv           |
 
 ## About
 
